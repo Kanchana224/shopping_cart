@@ -1,15 +1,14 @@
 import React,{useState} from 'react';
 
 function Card({ cart, setCart ,product}) {
-  const [inCart, setInCart] = useState(false)
+  const [inCart, setInCart] = useState(true)
   const addToCart = () => {
     setCart(cart + 1);
-    setInCart(true);
+    setInCart(false);
   };
-
   const removeFromCart = () => {
     setCart(cart - 1);
-    setInCart(false);
+    setInCart(true);
   };
   return (
     <div className="col mb-5">
@@ -41,12 +40,12 @@ function Card({ cart, setCart ,product}) {
         <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
           <div className="text-center">
           {inCart ? (
-              <button className="btn btn-outline-dark mt-auto" onClick={removeFromCart}>
-                Remove from Cart
-              </button>
-            ) : (
               <button className="btn btn-outline-dark mt-auto" onClick={addToCart}>
                 Add to Cart
+              </button>
+            ) : (
+              <button className="btn btn-outline-dark mt-auto"onClick={removeFromCart} >
+                Remove from Cart
               </button>
             )}
           </div>
